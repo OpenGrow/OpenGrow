@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>OpenGrow</title>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<link href="/static/css/bootstrap.css" rel="stylesheet" media="screen">
+	<link href="/static/css/messenger.css" rel="stylesheet">
+	<link href="/static/css/messenger-theme-flat.css" rel="stylesheet">
+	<script src="/static/js/jquery-latest.js"></script>
+	<!-- Téléchargé jquery pour faciliter l'accès au site en local (pas de dépendance à un autre site) -->
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/messenger.min.js"></script>
+	<script src="/static/js/messenger-theme-flat.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block js %}
+	<script type="text/javascript">
+	function basicOnLoad() {
+		Messenger.options = {
+			extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+			theme: 'flat'
+		}
+		{% with errors = get_flashed_messages(category_filter=["error"]) %}
+		{% if errors %}
+		{% for message in errors %}
+		Messenger().post({
+			message: "{{message}}",
+			type: 'error',
+			showCloseButton: true
+		});
+		{% endfor %}					        
+		{% endif %}
+		{% endwith %}
+
+		{% with infos = get_flashed_messages(category_filter=["info"]) %}
+		{% if infos %}
+		{% for message in infos %}
+		Messenger().post({
+			message: "{{message}}",
+			type: 'success',
+			showCloseButton: true
+		});
+		{% endfor %}					        
+		{% endif %}
+		{% endwith %}
+		update_values();
+		$("#logout").tooltip();
+	}
+	</script>
+	{% endblock %}
+
+</head>
+<style> body { padding-top: 60px; } </style>
+<body>
+	
+	{% block header %}
+
+	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">OpenGrow</a>
+		</div>
+		<div class="container">
+			<div class="navbar-collapse collapse navbar-right">
+				<p></p>
+				<p><a href="/logout" class="btn btn-danger btn-sm" role="button">logout</a></p>
+			</div><!-- /.nav-collapse -->
+		</div><!-- /.container -->
+	</div><!-- /.navbar -->
+	{% endblock %}
+	<div class="col-xs-5 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+		<div class="list-group">
+			{% block menu %}
+			{% set active_page = active_page|default('index') -%}
+			
+			{% if active_page == 'opengrow' %}
+			<a href="/opengrow/{{project_id}}" class="list-group-item active"><img src="/static/img/DefaultIcon/png/16x16/home.png">Dashboard</a>
+			{% else %}
+			<a href="/opengrow/{{project_id}}" class="list-group-item"><img src="/static/img/DefaultIcon/png/16x16/home.png">Dashboard</a>
+			{% endif %}
+
+			{% if active_page == 'camera' %}
+			<a href="/stream/{{project_id}}" class="list-group-item active"><img src="/static/img/DefaultIcon/png/16x16/MD-camera-video.png">Camera stream</a>
+			{% else %}
+			<a href="/stream/{{project_id}}" class="list-group-item"><img src="/static/img/DefaultIcon/png/16x16/MD-camera-video.png">Camera stream</a>
+			{% endif %}
+
+
+			{% if active_page == 'history' %}
+			<a href="/settings/{{project_id}}" class="list-group-item active"><img src="/static/img/DefaultIcon/png/16x16/content.png">History</a>
+			{% else %}
+			<a href="/settings/{{project_id}}" class="list-group-item"><img src="/static/img/DefaultIcon/png/16x16/content.png">History</a>
+			{% endif %}
+
+			{% if active_page == 'controlpanel' %}
+			<a href="/settings/{{project_id}}" class="list-group-item active"><img src="/static/img/DefaultIcon/png/16x16/MD-knob-volume.png">Control panel</a>
+			{% else %}
+			<a href="/settings/{{project_id}}" class="list-group-item"><img src="/static/img/DefaultIcon/png/16x16/MD-knob-volume.png">Control panel</a>
+			{% endif %}
+
+
+
+			{% if active_page == 'settings' %}
+			<a href="/settings/{{project_id}}" class="list-group-item active"><img src="/static/img/DefaultIcon/png/16x16/preferences.png">Settings</a>
+			{% else %}
+			<a href="/settings/{{project_id}}" class="list-group-item"><img src="/static/img/DefaultIcon/png/16x16/preferences.png">Settings</a>
+			{% endif %}
+
+			{% if active_page == 'projects' %}
+			<a href="/projects" class="list-group-item active"><img src="/static/img/DefaultIcon/png/16x16/arrow-1-backward.png">Projects</a>
+			{% else %}
+			<a href="/projects" class="list-group-item"><img src="/static/img/DefaultIcon/png/16x16/arrow-1-backward.png">Projects</a>
+			{% endif %}
+
+			{% endblock %}
+			
+		</div>
+	</div><!--/span-->
+	{% block content %}{% endblock %}
+	
+</body>
+</html>

@@ -1,0 +1,17 @@
+Projects
+id;name;create_date;thumbnail;
+
+Sensors
+id;project;type
+
+Logs
+project;date;message
+
+Users
+id;login;password
+
+Sensors_values
+sensor;date;value
+
+Photos
+id,projet,photo_path,date

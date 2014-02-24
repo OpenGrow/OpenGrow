@@ -1,0 +1,62 @@
+Devoir a rendre nom prenom groupe de 5
+-ebios
+-iso 27001
+-iso 27005
+
+1er temps : analyse de risque de type ebios (light, pas complique) par rapport au perimetre de l'extranet d'ingesup (truc pronote)
+démarche globale :
+1. instruire : contexte, périmètre, besoins, exigences, sensibilité
+2. analyser : menaces, vulnérabilités, classification, impact probabilité, gravité
+3. traiter : choix, mesures, risques résiduels, approbation, mise en oeuvre
+
+EBIOS analyse de risque
+ISO 27002 contre mesure a ces risques
+
+Instruire
+Contexte & Périmètre - Nous cherchons dans ce document a analyser les risques de sécurité inhérent à l'accès à l'extranet d'Ingésup. Cet extranet est par définition accessible depuis Internet et réservé principalement à l'accès pour des utilisateurs enregistrés sur le site.
+
+Besoin - Afin de répondre aux exigences, cette analyse ce concentrera sur les points suivant :
+		-le site doit être disponible a toute heure
+		-les droits des différents utilisateurs (étudiant, professeur, pédagogie, administrateur) doivent être cohérents
+		-l'authentification des utilisateurs doit être sécurisée
+		-le code du site ne doit pas présenté de vulnérabilité critiques (XSS, injection SQL)
+
+Exigences - L'extranet répondant a un besoin fonctionnel de la part de ses utilisateurs et donc incidentellement le bon fonctionnement d'Ingésup, celui ci doit demeurer accessible, son intégrité ne doit pas être atteint, la confidentialité des flux doit être maintenue entre utilisateurs et l'extranet et enfin, les transactions entre les utilisateurs et l'extranet doivent être traçables. Notre analyse doit garder ces exigences en ligne de mire.
+
+Sensibilité - Il s'agit de ne pas compromettre la facilité  d'utilisation de l'extranet pour des raisons sécuritaires (lenteur, alourdissement de l'interface)
+
+
+Analyser
+Menace - Les menaces sont les suivantes :
+		-défaçage du site
+		-modification / vol de données sensibles
+		-accès non autorisé au site
+		-usurpation d'identité
+
+Vulnérabilité - Les vulnérabilités sont les suivantes :
+		-XSS
+		-Injection SQL
+		-MITM
+		-Accès aux commandes système
+
+Classification - ??
+
+Impact probabilité - ??
+
+Gravité - La gravité des différentes menaces sont les suivantes : 
+		-défaçage : négligeable
+		-modification / vol : importante
+		-accès non autorisé : limitée
+		-usurpation d'identité : importante
+
+Traiter
+Choix -
+
+Mesures -
+
+Risques résiduels
+
+Approbation -
+
+Mise en oeuvre -
+
