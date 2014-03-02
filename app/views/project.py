@@ -10,7 +10,6 @@ from werkzeug import secure_filename
 # Local Imports
 from app import app
 from app.forms import NewProjectForm
-from app.functions import *
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
 

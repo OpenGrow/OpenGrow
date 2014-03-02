@@ -11,7 +11,6 @@ from werkzeug import secure_filename
 # Local Imports
 from app import app
 from app.forms import *
-from app.functions import *
 
 # Package Imports
 from decorators import login_required
